@@ -17,3 +17,9 @@ mkdir /tmp/verible-bin
 cd /tmp/verible-bin
 wget --no-verbose -O verible.tar.gz "${LATEST_VERIBLE_RELEASE}"
 tar -xzf verible.tar.gz --strip-components=1
+
+# Update glibc for Verible
+apt-cache policy libc6
+sudo apt update
+sudo apt install libc6
+apt-cache policy libc6
