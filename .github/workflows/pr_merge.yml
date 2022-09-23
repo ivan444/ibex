@@ -1,0 +1,35 @@
+# Copyright lowRISC contributors.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+name: pr-merge
+
+on:
+  push:
+    branches:
+    - master
+    - main
+
+jobs:
+  Kythe:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+       # Download complete repository + tags
+       fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        source
+        ./.github/bin/install-verible.sh
+        ./.github/bin/install-fusesoc.sh
+
+    - name: Create Kythe KZip
+      run: |
+        source ./.github/bin/extract-kythe-facts.sh
+
+    - name: 📤 Upload Kythe KZip
+      uses: actions/upload-artifact@v2
+      with:
+        path: kythe_output/*.kzip
