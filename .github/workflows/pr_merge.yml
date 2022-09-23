@@ -21,13 +21,12 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        source
         ./.github/bin/install-verible.sh
         ./.github/bin/install-fusesoc.sh
 
     - name: Create Kythe KZip
       run: |
-        source ./.github/bin/extract-kythe-facts.sh
+        ./.github/bin/extract-kythe-facts.sh
 
     - name: 📤 Upload Kythe KZip
       uses: actions/upload-artifact@v2
