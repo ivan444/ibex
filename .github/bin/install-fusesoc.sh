@@ -11,6 +11,6 @@ sudo apt install -y \
   python3 \
   python3-pip
 
-pip3 install --upgrade --user Mako
+pip3 install --upgrade --user Mako cores
 pip3 install --upgrade --user fusesoc
 
