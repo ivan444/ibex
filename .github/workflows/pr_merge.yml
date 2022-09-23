@@ -26,7 +26,7 @@ jobs:
 
     - name: Create Kythe KZip
       run: |
-        ./.github/bin/extract-kythe-facts.sh
+        ./.github/bin/create-kythe-kzip.sh
 
     - name: 📤 Upload Kythe KZip
       uses: actions/upload-artifact@v2
